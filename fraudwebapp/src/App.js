@@ -1,21 +1,26 @@
-import React from 'react';
-import './App.css';
-import Home from './Pages/Home';
-import Login from './Pages/Login';
-import Project from './Pages/Project';
-import { Route, Link } from "react-router-dom";
-
-
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+import Layout from "./pages/Layout"
 
 function App() {
   return (
-    <div className="App">
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/project" component={Project} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+
+
 
 export default App;
